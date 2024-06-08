@@ -13,7 +13,8 @@ export default function IngredientComponent(
         id = uuid.v4(),
         name = undefined,
         quantity = 0,
-        ingredientQuantityUnit = "g"
+        ingredientQuantityUnit = "g",
+        isEnabled = true
     }
 ) {
     const [ingredientId, setIngredientId] = useState(id);
@@ -44,18 +45,21 @@ export default function IngredientComponent(
                     id={`ingredient-name-${ingredientId}`}
                     label="Name:"
                     value={ingredientName}
+                    isEnabled={isEnabled}
                     onChangeTextHandler={onChangeIngredientNameHandler}
                 />
                 <Input
                     id={`ingredient-quantity-${ingredientId}`}
                     label="Quantity:"
                     value={ingredientQuantity}
+                    isEnabled={isEnabled}
                     onChangeTextHandler={onChangeIngredientQuantityHandler}
                 />
                 <Combobox id={`ingredient-quantity-unit-${ingredientId}`}
                           label="Unit:"
                           data={ingredientQuantityUnitsArray}
                           onChangeSelectionHandler={onChangeIngredientQuantityUnitHandler}
+                          isEnabled={isEnabled}
                 />
             </div>
         </section>

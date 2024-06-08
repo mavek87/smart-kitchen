@@ -6,7 +6,8 @@ export default function Input(
         value = "",
         label,
         onChangeTextHandler,
-        restOfProps
+        restOfProps,
+        isEnabled = true
     }
 ) {
 
@@ -28,6 +29,7 @@ export default function Input(
                 id={id}
                 onChange={event => onChangeText(event)}
                 value={value}
+                disabled={!isEnabled}
                 {...restOfProps}
             />
         </div>

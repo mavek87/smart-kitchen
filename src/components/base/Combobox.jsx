@@ -8,6 +8,7 @@ export default function Combobox(
         onChangeSelectionHandler,
         selectClasses,
         optionsClasses,
+        isEnabled = true,
         restOfProps
     }
 ) {
@@ -24,7 +25,7 @@ export default function Combobox(
     return (
         <div className={"flex items-center space-x-6"}>
             {label ? <label htmlFor={id}>{label}</label> : undefined}
-            <select id={id} onChange={event => onChangeSelect(event)} className={selectClasses} {...restOfProps}>
+            <select id={id} onChange={event => onChangeSelect(event)} disabled={!isEnabled} className={selectClasses} {...restOfProps}>
                 {
                     data.map((element, index) => (
                         <option value={element.value} key={element.id ? element.id : index} className={optionsClasses}>

@@ -11,6 +11,7 @@ export default function RecipeComponent({name, ingredients}) {
                         name={ingredient.name}
                         quantity={ingredient.quantity}
                         ingredientQuantityUnit={ingredient.ingredientQuantityUnit}
+                        isEnabled={false}
                     />
                 ))
             }
