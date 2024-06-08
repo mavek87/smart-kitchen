@@ -22,7 +22,7 @@ export default function Combobox(
     }
 
     return (
-        <div className={"flex items-center space-x-2 "}>
+        <div className={"flex items-center space-x-6"}>
             {label ? <label htmlFor={id}>{label}</label> : undefined}
             <select id={id} onChange={event => onChangeSelect(event)} className={selectClasses} {...restOfProps}>
                 {

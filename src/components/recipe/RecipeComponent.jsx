@@ -16,16 +16,4 @@ export default function RecipeComponent({name, ingredients}) {
             }
         </section>
     );
-};
-
-// { ingredients ?
-//     ingredients.map((ingredient) => {
-//
-//         <IngredientComponent
-//             name={ingredient.name}
-//             quantity={ingredient.quantity}
-//             ingredientQuantityUnit={ingredient.ingredientQuantityUnit}
-//         />
-//     })
-//     : undefined
-// }
+}

@@ -4,11 +4,18 @@ import {useState} from "react";
 import * as uuid from "uuid";
 
 const ingredientQuantityUnitsArray = [
-    {id: 1, value: "g", text: 'Grams'},
-    {id: 2, value: "kg", text: 'Kilograms'},
+    {id: 1, value: "g", text: "Grams"},
+    {id: 2, value: "kg", text: "Kilograms"},
 ]
 
-export default function IngredientComponent({id=uuid.v4(), name = undefined, quantity = 0, ingredientQuantityUnit = "g"}) {
+export default function IngredientComponent(
+    {
+        id = uuid.v4(),
+        name = undefined,
+        quantity = 0,
+        ingredientQuantityUnit = "g"
+    }
+) {
     const [ingredientId, setIngredientId] = useState(id);
     const [ingredientName, setIngredientName] = useState(name);
     const [ingredientQuantity, setIngredientQuantity] = useState(quantity);
