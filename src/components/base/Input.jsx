@@ -1,38 +1,22 @@
 import * as uuid from "uuid";
 
-export default function Combobox(
+export default function Input(
     {
-        data,
         id = uuid.v4(),
         label,
-        onChangeSelectionHandler,
-        selectClasses,
-        optionsClasses,
+        onChangeTextHandler,
         restOfProps
     }
 ) {
-    const onChangeSelect = (event) => {
+    const onChangeText = (event) => {
         event.preventDefault();
-
-        const target = event.target;
-        const {id, value, selectedIndex} = target;
-        const text = target.options[selectedIndex].text
-
-        onChangeSelectionHandler({id, value, text});
+        onChangeTextHandler(event.target.value);
     }
 
     return (
         <>
             {label ? <label htmlFor={id}>{label}</label> : undefined}
-            <select id={id} onChange={event => onChangeSelect(event)} className={selectClasses} {...restOfProps}>
-                {
-                    data.map((element, index) => (
-                        <option value={element.value} key={element.id ? element.id : index} className={optionsClasses}>
-                            {element.text}
-                        </option>
-                    ))
-                }
-            </select>
+            <input type="text" id={id} {...restOfProps} onChange={event => onChangeText(event)}/>
         </>
 
     );
