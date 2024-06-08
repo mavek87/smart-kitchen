@@ -1,16 +1,41 @@
 import './App.css'
-import IngredientComponent from "./components/IngredientComponent.jsx";
+import {useState} from "react";
+import RecipeComponent from "./components/recipe/RecipeComponent.jsx";
+import * as uuid from "uuid";
+
+const recipeCarbonara = [
+    {
+        id: uuid.v4(),
+        name: 'spaghetti',
+        quantity: 150,
+        ingredientQuantityUnit: 'g'
+    },
+    {
+        id: uuid.v4(),
+        name: 'egg',
+        quantity: 100,
+        ingredientQuantityUnit: 'g'
+    },
+    {
+        id: uuid.v4(),
+        name: 'pancetta',
+        quantity: 50,
+        ingredientQuantityUnit: 'g'
+    },
+    {
+        id: uuid.v4(),
+        name: 'pecorino',
+        quantity: 10,
+        ingredientQuantityUnit: 'g'
+    }
+]
 
 function App() {
+    const [ingredients, setIngredients] = useState(recipeCarbonara);
+
     return (
         <>
-            <IngredientComponent />
-            {/*<Combobox data={["primo", "secondo"]}/>*/}
-            {/*<p>*/}
-            {/*<span>*/}
-            {/*    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at dicta doloremque doloribus eligendi facere id magni odit possimus quo quod quos, recusandae sapiente, tenetur voluptas? Dolor ex laudantium suscipit.</span><span>Adipisci aliquam cumque et iusto mollitia necessitatibus repellat, sit. Aperiam at atque ea enim et, explicabo molestiae necessitatibus nisi non officia, quae quam qui quidem repudiandae sed sunt totam unde.</span><span>Accusantium cupiditate deleniti dignissimos eligendi excepturi, facilis fugit hic id impedit itaque, nulla obcaecati quis tenetur totam vitae? Amet beatae consectetur eligendi exercitationem mollitia ratione reiciendis rem suscipit temporibus veniam?</span><span>Aliquid amet assumenda consequuntur dicta dignissimos doloribus enim est ex exercitationem expedita fugiat fugit illo, molestiae nesciunt nisi, nostrum odio omnis optio perferendis quasi quidem quis repellendus sit vitae voluptate?</span><span>Ad dolores dolorum explicabo harum illo incidunt, ipsa iste laudantium magni, nesciunt nostrum, obcaecati odit perspiciatis porro praesentium quae quam quas soluta tenetur ut. Autem ipsum maiores nesciunt nostrum quam.</span><span>Animi eligendi esse voluptas voluptate? Adipisci alias aliquid consectetur cupiditate esse est et fugiat impedit, in incidunt neque numquam quam, quas qui quibusdam quis reiciendis, sunt tempora ullam velit. Ipsa?</span><span>Aperiam, eveniet illo incidunt ipsam labore laborum maiores molestias nam nihil pariatur quam, tempora ut. Ab aperiam eum, expedita id ipsam, magni, nihil nulla possimus quas quasi sequi voluptatibus? Consectetur!</span><span>Aliquid beatae consequatur, culpa cumque deserunt eligendi error excepturi expedita ipsam iste numquam optio placeat praesentium quod, reprehenderit rerum sequi sit suscipit tempore totam velit vero voluptas voluptatum. Enim, tenetur.</span><span>At, atque dolore iure, iusto magni modi molestias natus nihil obcaecati praesentium reiciendis rem totam voluptatum. Ea eos in laboriosam odit velit. Assumenda consequatur exercitationem, quos reprehenderit veniam veritatis vero.</span><span>Ducimus labore nemo provident! Aliquid at aut consectetur expedita libero, odio odit perferendis placeat sequi voluptas. Ab animi autem dolorem est excepturi labore minus, nulla reprehenderit veniam voluptatibus. In, ipsam.</span><span>Aliquid, beatae consequatur debitis deserunt ea ex harum illo in inventore iure magnam mollitia nesciunt nulla reiciendis tempore vitae voluptatibus voluptatum? Asperiores consequatur earum, expedita obcaecati officia qui sit? Animi?</span><span>Animi eligendi explicabo id labore nobis veritatis vitae. Aliquam aperiam consectetur fugiat hic laborum nihil nostrum possimus sint sit soluta? Atque est ex hic labore magnam nesciunt sit suscipit vero.</span><span>Corporis delectus deleniti facilis in, ipsa iste magnam omnis pariatur placeat porro quos veniam voluptatum? Facilis, nobis saepe. Aut enim, ex excepturi facilis iusto nostrum quas quis reiciendis rerum tempora.</span><span>A autem dolor eaque, earum esse exercitationem facere illum in molestiae necessitatibus nobis repellat voluptas? Aliquam atque debitis doloribus error facilis, itaque minus modi praesentium quod rem, repellendus totam voluptates.</span><span>Architecto, delectus deserunt dolores excepturi harum iste modi necessitatibus nihil officiis quae, recusandae similique velit voluptatibus! Animi autem culpa, dolorem eaque fugit inventore itaque perspiciatis quos rerum! Ad cupiditate, sunt.</span><span>Ab accusantium aliquam beatae consectetur debitis dolorem dolorum et explicabo illum itaque iure necessitatibus nihil nisi odio quidem recusandae sequi sint ullam, vel voluptatem. Eos placeat qui tenetur ullam. Quam?</span><span>Accusamus eum ipsam provident quam rerum. Architecto dolore dolorem esse eveniet exercitationem facilis illum labore minima odio quas qui repellat repudiandae similique, sit vero! Debitis error excepturi itaque nihil quas.</span><span>Aperiam at beatae culpa dicta eos excepturi fugit illum iure iusto maiores nostrum, pariatur praesentium qui quidem rerum sed, tempore. Animi ex, hic non officia quas sunt temporibus unde veritatis?</span><span>Autem consectetur dolores id nesciunt suscipit. Aliquid dignissimos dolor in incidunt laborum libero mollitia, nesciunt optio quae quia, repudiandae vero! Id optio praesentium quam. Beatae exercitationem fugiat nobis perspiciatis provident?</span><span>Ad beatae cupiditate, deleniti distinctio dolorem doloremque ducimus est expedita impedit iure iusto maxime neque nihil placeat praesentium qui repellat saepe sequi sit soluta sunt tempora ullam vel veritatis voluptatibus?*/}
-            {/*</span>*/}
-            {/*</p>*/}
+            <RecipeComponent name="carbonara" ingredients={ingredients}/>
         </>
     )
 }

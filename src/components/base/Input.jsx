@@ -3,21 +3,33 @@ import * as uuid from "uuid";
 export default function Input(
     {
         id = uuid.v4(),
+        value = "",
         label,
         onChangeTextHandler,
         restOfProps
     }
 ) {
+
     const onChangeText = (event) => {
         event.preventDefault();
         onChangeTextHandler(event.target.value);
     }
 
     return (
-        <>
-            {label ? <label htmlFor={id}>{label}</label> : undefined}
-            <input type="text" id={id} {...restOfProps} onChange={event => onChangeText(event)}/>
-        </>
-
+        <div className={"flex items-center space-x-2"}>
+            {label ?
+                <label htmlFor={id} className="mr-4">
+                    {label}
+                </label>
+                : undefined
+            }
+            <input
+                type="text"
+                id={id}
+                onChange={event => onChangeText(event)}
+                value={value}
+                {...restOfProps}
+            />
+        </div>
     );
 };
