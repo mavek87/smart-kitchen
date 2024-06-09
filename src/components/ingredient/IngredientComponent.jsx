@@ -2,11 +2,20 @@ import Combobox from "../base/Combobox.jsx";
 import Input from "../base/Input.jsx";
 import {useState} from "react";
 import * as uuid from "uuid";
+import PropTypes from "prop-types";
 
 const ingredientQuantityUnitsArray = [
     {id: 1, value: "g", text: "Grams"},
     {id: 2, value: "kg", text: "Kilograms"},
 ]
+
+IngredientComponent.propTypes = {
+    id: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+    ingredientQuantityUnit: PropTypes.string.isRequired,
+    isEnabled: PropTypes.bool
+};
 
 export default function IngredientComponent(
     {
@@ -17,7 +26,7 @@ export default function IngredientComponent(
         isEnabled = true
     }
 ) {
-    const [ingredientId, setIngredientId] = useState(id);
+    const [ingredientId] = useState(id);
     const [ingredientName, setIngredientName] = useState(name);
     const [ingredientQuantity, setIngredientQuantity] = useState(quantity);
     const [setIngredientQuantityUnit] = useState(ingredientQuantityUnit);
