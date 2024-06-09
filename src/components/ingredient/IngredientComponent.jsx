@@ -48,24 +48,20 @@ export default function IngredientComponent(
 
     return (
         <section id={ingredientId}>
-            <h3>Ingredient</h3>
             <div className={"flex flex-col md:flex-row md:space-x-4"}>
                 <Input
                     id={`ingredient-name-${ingredientId}`}
-                    label="Name:"
                     value={ingredientName}
                     isEnabled={isEnabled}
                     onChangeTextHandler={onChangeIngredientNameHandler}
                 />
                 <Input
                     id={`ingredient-quantity-${ingredientId}`}
-                    label="Quantity:"
                     value={ingredientQuantity}
                     isEnabled={isEnabled}
                     onChangeTextHandler={onChangeIngredientQuantityHandler}
                 />
                 <Combobox id={`ingredient-quantity-unit-${ingredientId}`}
-                          label="Unit:"
                           data={ingredientQuantityUnitsArray}
                           onChangeSelectionHandler={onChangeIngredientQuantityUnitHandler}
                           isEnabled={isEnabled}

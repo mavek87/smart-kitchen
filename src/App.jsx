@@ -38,7 +38,8 @@ function App() {
 
     return (
         <>
-            <RecipeComponent name={recipe.name} ingredients={recipe.ingredients}/>
+            {/*<RecipeComponent name={recipe.name} ingredients={recipe.ingredients} isModifiable={false}/>*/}
+            <RecipeComponent name={recipe.name} ingredients={recipe.ingredients} isModifiable={false}/>
         </>
     )
 }
