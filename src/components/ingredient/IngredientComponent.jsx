@@ -10,7 +10,7 @@ const ingredientQuantityUnitsArray = [
 ]
 
 IngredientComponent.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     ingredientQuantityUnit: PropTypes.string.isRequired,
