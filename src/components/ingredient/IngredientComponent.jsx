@@ -3,6 +3,7 @@ import Input from "../base/Input.jsx";
 import {useState} from "react";
 import * as uuid from "uuid";
 import PropTypes from "prop-types";
+import {toJsonPretty} from "../../utils/strings.js";
 
 const ingredientQuantityUnitsArray = [
     {id: 1, value: "g", text: "Grams"},
@@ -17,15 +18,17 @@ IngredientComponent.propTypes = {
     isEnabled: PropTypes.bool
 };
 
-export default function IngredientComponent(
-    {
+export default function IngredientComponent(props) {
+    console.log(`Rendering IngredientComponent ${toJsonPretty(props)}`);
+
+    const {
         id = uuid.v4(),
         name = undefined,
         quantity = 0,
         ingredientQuantityUnit = "g",
         isEnabled = true
-    }
-) {
+    } = props;
+
     const [ingredientId] = useState(id);
     const [ingredientName, setIngredientName] = useState(name);
     const [ingredientQuantity, setIngredientQuantity] = useState(quantity);
@@ -58,7 +61,7 @@ export default function IngredientComponent(
                 <Input
                     id={`ingredient-quantity-${ingredientId}`}
                     value={+ingredientQuantity}
-                    isEnabled={true}
+                    isEnabled={isEnabled}
                     type="number"
                     onChangeTextHandler={onChangeIngredientQuantityHandler}
                 />

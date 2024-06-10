@@ -1,6 +1,7 @@
 import IngredientComponent from "../ingredient/IngredientComponent.jsx";
 import * as strings from "../../utils/strings.js";
 import PropTypes from "prop-types";
+import {toJsonPretty} from "../../utils/strings.js";
 
 RecipeComponent.propTypes = {
     id: PropTypes.string.isRequired,
@@ -9,7 +10,11 @@ RecipeComponent.propTypes = {
     isModifiable: IngredientComponent.propTypes.isEnabled
 };
 
-export default function RecipeComponent({id, name, ingredients, isModifiable}) {
+export default function RecipeComponent(props) {
+    console.log(`Rendering RecipeComponent ${toJsonPretty(props)}`);
+
+    const {id, name, ingredients, isModifiable} = props;
+
     const jsxIngredients = ingredients.map((ingredient) => (
         <li key={`${id}-${ingredient.id}`}>
             <IngredientComponent

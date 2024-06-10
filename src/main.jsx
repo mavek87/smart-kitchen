@@ -4,9 +4,9 @@ import App from './App.jsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
+    //<React.StrictMode>
         <main className="container-fluid">
             <App/>
         </main>
-    </React.StrictMode>
+    //</React.StrictMode>
 )

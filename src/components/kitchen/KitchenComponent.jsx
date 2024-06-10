@@ -1,5 +1,6 @@
 import RecipeComponent from "../recipe/RecipeComponent.jsx";
 import PropTypes from "prop-types";
+import {toJsonPretty} from "../../utils/strings.js";
 
 KitchenComponent.propTypes = {
     kitchen: {
@@ -7,7 +8,11 @@ KitchenComponent.propTypes = {
     }
 };
 
-export default function KitchenComponent({kitchen}) {
+export default function KitchenComponent(props) {
+    console.log(`Rendering KitchenComponent ${toJsonPretty(props)}`);
+
+    const {kitchen} = props;
+
     const recipes = kitchen.recipes.map((recipe) => (
         <li key={recipe.id} className={"list-none"}>
             <RecipeComponent
