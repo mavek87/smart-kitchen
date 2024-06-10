@@ -57,8 +57,9 @@ export default function IngredientComponent(
                 />
                 <Input
                     id={`ingredient-quantity-${ingredientId}`}
-                    value={ingredientQuantity}
-                    isEnabled={isEnabled}
+                    value={+ingredientQuantity}
+                    isEnabled={true}
+                    type="number"
                     onChangeTextHandler={onChangeIngredientQuantityHandler}
                 />
                 <Combobox id={`ingredient-quantity-unit-${ingredientId}`}

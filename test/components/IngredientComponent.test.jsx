@@ -1,4 +1,4 @@
-import {it, expect, describe} from "vitest";
+import {describe, expect, it} from "vitest";
 import {render, screen} from "@testing-library/react"
 import IngredientComponent from "../../src/components/ingredient/IngredientComponent.jsx";
 import "@testing-library/jest-dom/vitest"
@@ -10,17 +10,23 @@ describe("Ingredient Component Tests", () => {
 
         const ingredientName = "provola";
         const ingredientQuantity = 1;
-        render(<IngredientComponent id={uuid.v4()} name={ingredientName} quantity={ingredientQuantity}
-                                    ingredientQuantityUnit={"g"}/>)
+        render(
+            <IngredientComponent
+                id={uuid.v4()}
+                name={ingredientName}
+                quantity={ingredientQuantity}
+                ingredientQuantityUnit={"g"}
+            />
+        )
 
         // Shows the DOM structure
         screen.debug();
 
-        const textbox = await screen.getAllByRole("textbox");
+        const txtIngredientName = await screen.getByRole("textbox");
+        expect(txtIngredientName.value).toBe(ingredientName);
 
-        expect(textbox.length).toBe(2);
-        expect(textbox[0].value).toBe(ingredientName);
-        expect(+textbox[1].value).toBe(ingredientQuantity);
+        const txtIngredientQuantity = await screen.getByRole('spinbutton')
+        expect(+txtIngredientQuantity.value).toBe(ingredientQuantity);
 
         const combobox = await screen.getByRole("combobox");
         expect(combobox).toBeInTheDocument();

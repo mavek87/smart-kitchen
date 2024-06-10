@@ -10,24 +10,26 @@ RecipeComponent.propTypes = {
 };
 
 export default function RecipeComponent({id, name, ingredients, isModifiable}) {
+    const jsxIngredients = ingredients.map((ingredient) => (
+        <li key={`${id}-${ingredient.id}`}>
+            <IngredientComponent
+                id={ingredient.id}
+                name={ingredient.name}
+                quantity={ingredient.quantity}
+                ingredientQuantityUnit={ingredient.ingredientQuantityUnit}
+                isEnabled={isModifiable}
+            />
+        </li>
+    ));
+
     return (
         <article>
             <h1>{name ? strings.capitalize(name) : "Unknown recipe"}</h1>
-            <ul>
-                {
-                    ingredients.map((ingredient) => (
-                        <li key={`${id}-${ingredient.id}`}>
-                            <IngredientComponent
-                                id={ingredient.id}
-                                name={ingredient.name}
-                                quantity={ingredient.quantity}
-                                ingredientQuantityUnit={ingredient.ingredientQuantityUnit}
-                                isEnabled={isModifiable}
-                            />
-                        </li>
-                    ))
-                }
-            < /ul>
+            {
+                ingredients.length > 0
+                    ? <ul>{jsxIngredients}</ul>
+                    : null
+            }
         </article>
     );
 }

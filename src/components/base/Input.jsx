@@ -3,14 +3,14 @@ import * as uuid from "uuid";
 export default function Input(
     {
         id = uuid.v4(),
-        value = "",
+        type = "text",
+        value,
         label,
         onChangeTextHandler,
-        restOfProps,
-        isEnabled = true
+        isEnabled = true,
+        restOfProps
     }
 ) {
-
     const onChangeText = (event) => {
         event.preventDefault();
         onChangeTextHandler(event.target.value);
@@ -25,8 +25,8 @@ export default function Input(
                 : undefined
             }
             <input
-                type="text"
                 id={id}
+                type={type}
                 onChange={event => onChangeText(event)}
                 value={value}
                 disabled={!isEnabled}
