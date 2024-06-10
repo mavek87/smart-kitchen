@@ -11,26 +11,23 @@ RecipeComponent.propTypes = {
 
 export default function RecipeComponent({id, name, ingredients, isModifiable}) {
     return (
-        <section>
-            <article>
-                <h1>{name ? strings.capitalize(name) : "Unknown recipe"}</h1>
-                <ul>
-                    {
-                        ingredients.map((ingredient) => (
-                            <li key={`${id}-${ingredient.id}`}>
-                                <IngredientComponent
-                                    id={ingredient.id}
-                                    name={ingredient.name}
-                                    quantity={ingredient.quantity}
-                                    ingredientQuantityUnit={ingredient.ingredientQuantityUnit}
-                                    isEnabled={isModifiable}
-                                />
-                            </li>
-
-                        ))
-                    }
-                < /ul>
-            </article>
-        </section>
+        <article>
+            <h1>{name ? strings.capitalize(name) : "Unknown recipe"}</h1>
+            <ul>
+                {
+                    ingredients.map((ingredient) => (
+                        <li key={`${id}-${ingredient.id}`}>
+                            <IngredientComponent
+                                id={ingredient.id}
+                                name={ingredient.name}
+                                quantity={ingredient.quantity}
+                                ingredientQuantityUnit={ingredient.ingredientQuantityUnit}
+                                isEnabled={isModifiable}
+                            />
+                        </li>
+                    ))
+                }
+            < /ul>
+        </article>
     );
 }
