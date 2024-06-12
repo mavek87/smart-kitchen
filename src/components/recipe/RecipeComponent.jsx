@@ -26,7 +26,7 @@ export default function RecipeComponent(props) {
     }
 
     const jsxIngredients = ingredients.map((ingredient) => (
-        <li className={"list-decimal"} key={`${id}-${ingredient.id}`}>
+        <li key={`${id}-${ingredient.id}`}>
             <IngredientComponent
                 id={ingredient.id}
                 name={ingredient.name}

@@ -15,20 +15,20 @@ export default function KitchenComponent(props) {
     const {kitchen} = props;
 
     const recipes = kitchen.recipes.map((recipe) => (
-        <li key={recipe.id} className={"list-none"}>
+        <div key={recipe.id}>
             <RecipeComponent
                 id={recipe.id}
                 name={recipe.name}
                 ingredients={recipe.ingredients}
                 isModifiable={false}/>
-        </li>
+        </div>
     ));
 
     const view = recipes.length > 0
         ?
         <>
             <KitchenMenu />
-            <ul>{recipes}</ul>
+            {recipes}
         </>
         : null;
 
