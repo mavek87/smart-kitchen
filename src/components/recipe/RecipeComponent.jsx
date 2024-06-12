@@ -2,6 +2,7 @@ import IngredientComponent from "../ingredient/IngredientComponent.jsx";
 import * as strings from "../../utils/strings.js";
 import PropTypes from "prop-types";
 import {toJsonPretty} from "../../utils/strings.js";
+import Input from "../base/Input.jsx";
 
 RecipeComponent.propTypes = {
     id: PropTypes.string.isRequired,
@@ -27,14 +28,35 @@ export default function RecipeComponent(props) {
         </li>
     ));
 
+    const saveHandler = () => {
+        alert("Save button pressed");
+    }
+
+    const cancelHandler = () => {
+        alert("Cancel button pressed");
+    }
+
+    const title = isModifiable ? <Input type={"text"} placeholder={"Recipe name"}/> : <h3>{name ? strings.capitalize(name) : "Unknown recipe"}</h3>
+
     return (
-        <article>
-            <h1>{name ? strings.capitalize(name) : "Unknown recipe"}</h1>
+        <>
+            <article>
+                {title}
+                {
+                    ingredients.length > 0
+                        ? <ul>{jsxIngredients}</ul>
+                        : null
+                }
+            </article>
             {
-                ingredients.length > 0
-                    ? <ul>{jsxIngredients}</ul>
-                    : null
+                isModifiable ? (
+                    <>
+                        <input type={"button"} value={"Save"} onClick={saveHandler}/>
+                        <input type={"button"} value={"Cancel"} className={"secondary"} onClick={cancelHandler}/>
+                    </>
+                ) : null
             }
-        </article>
+
+        </>
     );
 }

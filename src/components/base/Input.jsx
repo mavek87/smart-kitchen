@@ -1,9 +1,11 @@
 import * as uuid from "uuid";
 
+// TODO: remove type and placeholder and make work ...restProps
 export default function Input(
     {
         id = uuid.v4(),
         type = "text",
+        placeholder = "",
         value,
         label,
         onChangeTextHandler,
@@ -27,6 +29,7 @@ export default function Input(
             <input
                 id={id}
                 type={type}
+                placeholder={placeholder}
                 onChange={event => onChangeText(event)}
                 value={value}
                 disabled={!isEnabled}

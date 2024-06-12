@@ -1,6 +1,7 @@
 import RecipeComponent from "../recipe/RecipeComponent.jsx";
 import PropTypes from "prop-types";
 import {toJsonPretty} from "../../utils/strings.js";
+import KitchenMenu from "./KitchenMenu.jsx";
 
 KitchenComponent.propTypes = {
     kitchen: {
@@ -24,7 +25,11 @@ export default function KitchenComponent(props) {
     ));
 
     const view = recipes.length > 0
-        ? <ul>{recipes}</ul>
+        ?
+        <>
+            <KitchenMenu />
+            <ul>{recipes}</ul>
+        </>
         : null;
 
     return (
