@@ -20,21 +20,20 @@ export default function KitchenComponent(props) {
                 id={recipe.id}
                 name={recipe.name}
                 ingredients={recipe.ingredients}
-                isModifiable={false}/>
+                isModifiable={false}
+            />
         </div>
     ));
 
-    const view = recipes.length > 0
-        ?
-        <>
-            <KitchenMenu />
-            {recipes}
-        </>
-        : null;
-
-    return (
-        <section>
-            {view}
-        </section>
-    );
+    return <section>
+        {
+            recipes.length > 0
+                ?
+                <>
+                    <KitchenMenu/>
+                    {recipes}
+                </>
+                : null
+        }
+    </section>;
 }

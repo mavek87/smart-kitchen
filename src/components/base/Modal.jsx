@@ -1,19 +1,23 @@
 // TODO: add prop types
 
+import ReactDOM from 'react-dom';
+
 export default function Modal({title, content, isOpen, onCloseHandler}) {
     const modalContent = <article>
         <header>
-            <button aria-label="Close" rel="prev" onClick={onCloseHandler}></button>
-            <p>
-                <strong>{title}</strong>
-            </p>
+            <button aria-label="Close" rel="prev" onClick={onCloseHandler} />
+            <h4>{title}</h4>
         </header>
         <p>
             {content}
         </p>
     </article>
 
-    return isOpen
+    const modalRoot = document.getElementById("modal-root");
+
+    const dialog = isOpen
         ? <dialog open>{modalContent}</dialog>
-        : <dialog>{modalContent}</dialog>;
+        : null
+
+    return ReactDOM.createPortal(dialog, modalRoot);
 }

@@ -56,16 +56,15 @@ export default function IngredientComponent(props) {
                     id={`ingredient-name-${ingredientId}`}
                     value={ingredientName}
                     placeholder={"ingredient name"}
-                    isEnabled={isEnabled}
-                    onChangeTextHandler={onChangeIngredientNameHandler}
+                    onChange={event => isEnabled ? onChangeIngredientNameHandler(event.target.value) : null}
                 />
                 <Input
                     id={`ingredient-quantity-${ingredientId}`}
                     value={+ingredientQuantity}
                     placeholder={"ingredient quantity"}
-                    isEnabled={isEnabled}
                     type="number"
-                    onChangeTextHandler={onChangeIngredientQuantityHandler}
+                    min={0}
+                    onChange={event => isEnabled ? onChangeIngredientQuantityHandler(event.target.value) : null}
                 />
                 <Combobox id={`ingredient-quantity-unit-${ingredientId}`}
                           data={ingredientQuantityUnitsArray}
