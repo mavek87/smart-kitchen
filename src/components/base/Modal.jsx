@@ -1,5 +1,6 @@
-function Modal({title, content, isOpen, onCloseHandler}) {
+// TODO: add prop types
 
+export default function Modal({title, content, isOpen, onCloseHandler}) {
     const modalContent = <article>
         <header>
             <button aria-label="Close" rel="prev" onClick={onCloseHandler}></button>
@@ -12,11 +13,7 @@ function Modal({title, content, isOpen, onCloseHandler}) {
         </p>
     </article>
 
-    const modalView = isOpen
+    return isOpen
         ? <dialog open>{modalContent}</dialog>
         : <dialog>{modalContent}</dialog>;
-
-    return modalView;
 }
-
-export default Modal;

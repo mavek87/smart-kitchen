@@ -2,6 +2,7 @@ import Modal from "../base/Modal.jsx";
 import {useState} from "react";
 import RecipeComponent from "../recipe/RecipeComponent.jsx";
 import * as uuid from "uuid";
+import Button from "../base/Button.jsx";
 
 function KitchenMenu() {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -31,7 +32,7 @@ function KitchenMenu() {
     return (
         <>
             <div className={"flex flex-row space-x-4"}>
-                <input type={"button"} value={"Add Recipe"} onClick={addRecipeHandler}/>
+                <Button value={"Add Recipe"} onClick={addRecipeHandler} />
             </div>
             {/*TODO: use portal?*/}
             <Modal

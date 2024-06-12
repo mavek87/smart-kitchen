@@ -10,7 +10,7 @@ export default function Input(
         label,
         onChangeTextHandler,
         isEnabled = true,
-        restOfProps
+        ...restOfProps
     }
 ) {
     const onChangeText = (event) => {
@@ -37,4 +37,4 @@ export default function Input(
             />
         </div>
     );
-};
+}

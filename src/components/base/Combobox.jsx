@@ -1,5 +1,6 @@
 import * as uuid from "uuid";
 
+// TODO: remove type and placeholder and make work ...restProps
 export default function Combobox(
     {
         data,
@@ -9,7 +10,7 @@ export default function Combobox(
         selectClasses,
         optionsClasses,
         isEnabled = true,
-        restOfProps
+        ...restOfProps
     }
 ) {
     const onChangeSelect = (event) => {
@@ -37,4 +38,4 @@ export default function Combobox(
         </div>
 
     );
-};
+}

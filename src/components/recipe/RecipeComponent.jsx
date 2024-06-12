@@ -3,6 +3,7 @@ import * as strings from "../../utils/strings.js";
 import PropTypes from "prop-types";
 import {toJsonPretty} from "../../utils/strings.js";
 import Input from "../base/Input.jsx";
+import Button from "../base/Button.jsx";
 
 RecipeComponent.propTypes = {
     id: PropTypes.string.isRequired,
@@ -51,8 +52,8 @@ export default function RecipeComponent(props) {
             {
                 isModifiable ? (
                     <>
-                        <input type={"button"} value={"Save"} onClick={saveHandler}/>
-                        <input type={"button"} value={"Cancel"} className={"secondary"} onClick={cancelHandler}/>
+                        <Button value={"Save"} onClick={saveHandler}/>
+                        <Button value={"Cancel"} className={"secondary"} onClick={cancelHandler}/>
                     </>
                 ) : null
             }
