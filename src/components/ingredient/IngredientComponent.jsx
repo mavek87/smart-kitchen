@@ -51,7 +51,7 @@ export default function IngredientComponent(props) {
 
     return (
         <section id={ingredientId}>
-            <div className={"flex flex-col md:flex-row md:space-x-4"}>
+            <div className={"flex flex-col justify-evenly md:flex-row md:space-x-4"}>
                 <Input
                     id={`ingredient-name-${ingredientId}`}
                     value={ingredientName}

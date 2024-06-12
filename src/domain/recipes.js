@@ -45,8 +45,8 @@ export const recipeMatriciana = {
         },
         {
             id: uuid.v4(),
-            name: 'egg',
-            quantity: 100,
+            name: 'tomato sauce',
+            quantity: 150,
             ingredientQuantityUnit: 'g'
         },
         {
