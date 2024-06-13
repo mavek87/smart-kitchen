@@ -54,24 +54,32 @@ export default function IngredientComponent(props) {
             <div className={"flex flex-col justify-evenly md:flex-row md:space-x-4"}>
                 <Input
                     id={`ingredient-name-${ingredientId}`}
+                    type="text"
                     value={ingredientName}
                     placeholder={"ingredient name"}
-                    onChange={event => isEnabled ? onChangeIngredientNameHandler(event.target.value) : null}
+                    className={"text-sm"}
+                    onChange={event => onChangeIngredientNameHandler(event.target.value)}
+                    readOnly={!isEnabled}
                 />
                 <Input
                     id={`ingredient-quantity-${ingredientId}`}
+                    type="number"
                     value={+ingredientQuantity}
                     placeholder={"ingredient quantity"}
-                    type="number"
                     min={0}
-                    onChange={event => isEnabled ? onChangeIngredientQuantityHandler(event.target.value) : null}
+                    className={"text-sm"}
+                    onChange={event => onChangeIngredientQuantityHandler(event.target.value)}
+                    readOnly={!isEnabled}
                 />
                 <Combobox id={`ingredient-quantity-unit-${ingredientId}`}
                           data={ingredientQuantityUnitsArray}
                           placeholder={"ingredient quantity unit"}
-                          onChangeSelectionHandler={onChangeIngredientQuantityUnitHandler}
+                          className={"text-sm"}
+                          onChange={event => onChangeIngredientQuantityUnitHandler(event.target.value)}
                           disabled={!isEnabled}
                 />
+                <button className={"h-12 primary text-sm"}>Edit</button>
+                <button className={"h-12 secondary text-sm"}>Delete</button>
             </div>
         </section>
     )

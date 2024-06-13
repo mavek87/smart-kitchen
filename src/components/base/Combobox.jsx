@@ -24,11 +24,20 @@ export default function Combobox(
 
     return (
         <div className={"flex items-center space-x-6"}>
-            {label ? <label htmlFor={id}>{label}</label> : undefined}
-            <select id={id} onChange={event => onChangeSelect(event)} className={selectClasses} {...restOfProps}>
+            {label ? <label htmlFor={id}>{label}</label> : null}
+            <select
+                id={id}
+                onChange={event => onChangeSelect(event)}
+                className={selectClasses}
+                {...restOfProps}
+            >
                 {
                     data.map((element, index) => (
-                        <option value={element.value} key={element.id ? element.id : index} className={optionsClasses}>
+                        <option
+                            value={element.value}
+                            key={element.id ? element.id : index}
+                            className={optionsClasses}
+                        >
                             {element.text}
                         </option>
                     ))

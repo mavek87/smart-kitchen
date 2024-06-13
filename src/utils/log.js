@@ -2,7 +2,8 @@ import {toJsonPretty} from "./strings.js";
 
 export function logComponentRendering(props) {
     // dont log component rendering in production!
-    if (!import.meta.env.PROD) {
+    // if (!import.meta.env.PROD) {
+    if (import.meta.env.PROD) {
         const stack = new Error().stack;
         const stackLines = stack.split('\n');
 
