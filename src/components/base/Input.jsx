@@ -5,15 +5,8 @@ Input.propTypes = {
     label: PropTypes.string
 };
 
-export default function Input(
-    {
-        id,
-        label,
-        ...restOfProps
-    }
-) {
-    const labelForInput = label
-        ?
+export default function Input({id, label, ...restOfProps}) {
+    const labelForInput = label ?
         <label htmlFor={id} className="mr-4">
             {label}
         </label>

@@ -32,7 +32,7 @@ export default function IngredientComponent(props) {
     const [ingredientId] = useState(id);
     const [ingredientName, setIngredientName] = useState(name);
     const [ingredientQuantity, setIngredientQuantity] = useState(quantity);
-    const [setIngredientQuantityUnit] = useState(ingredientQuantityUnit);
+    const [, setIngredientQuantityUnit] = useState(ingredientQuantityUnit);
 
     const onChangeIngredientNameHandler = (ingredientName) => {
         console.log(ingredientName);

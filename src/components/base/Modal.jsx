@@ -22,16 +22,12 @@ export default function Modal(
             <button aria-label="Close" rel="prev" onClick={onCloseHandler}/>
             <h4>{title}</h4>
         </header>
-        <p>
-            {content}
-        </p>
+        <p>{content}</p>
     </article>
-
-    const modalRoot = document.getElementById("modal-root");
 
     const dialog = isOpen
         ? <dialog open>{modalContent}</dialog>
         : null
 
-    return ReactDOM.createPortal(dialog, modalRoot);
+    return ReactDOM.createPortal(dialog, document.getElementById("modal-root"));
 }
