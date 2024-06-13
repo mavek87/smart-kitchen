@@ -12,10 +12,6 @@ export default function Input(
         ...restOfProps
     }
 ) {
-    const input = id
-        ? <input id={id} {...restOfProps} />
-        : <input {...restOfProps} />
-
     const labelForInput = label
         ?
         <label htmlFor={id} className="mr-4">
@@ -26,7 +22,7 @@ export default function Input(
     return (
         <div className={"flex items-center space-x-2"}>
             {labelForInput}
-            {input}
+            <input id={id} {...restOfProps} />
         </div>
     );
 }
