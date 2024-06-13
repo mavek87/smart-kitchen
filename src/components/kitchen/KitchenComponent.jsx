@@ -1,16 +1,16 @@
 import RecipeComponent from "../recipe/RecipeComponent.jsx";
 import PropTypes from "prop-types";
-import {toJsonPretty} from "../../utils/strings.js";
-import KitchenMenu from "./KitchenMenu.jsx";
+import KitchenMenuComponent from "./KitchenMenuComponent.jsx";
+import {logComponentRendering} from "../../utils/log.js";
 
 KitchenComponent.propTypes = {
-    kitchen: {
-        recipes: PropTypes.arrayOf(PropTypes.instanceOf(RecipeComponent)).isRequired
-    }
+    kitchen: PropTypes.shape({
+        recipes: PropTypes.arrayOf(PropTypes.object).isRequired
+    })
 };
 
 export default function KitchenComponent(props) {
-    console.log(`Rendering KitchenComponent ${toJsonPretty(props)}`);
+    logComponentRendering(props);
 
     const {kitchen} = props;
 
@@ -30,7 +30,7 @@ export default function KitchenComponent(props) {
             recipes.length > 0
                 ?
                 <>
-                    <KitchenMenu/>
+                    <KitchenMenuComponent/>
                     {recipes}
                 </>
                 : null

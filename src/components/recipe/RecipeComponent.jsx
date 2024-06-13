@@ -1,10 +1,10 @@
 import IngredientComponent from "../ingredient/IngredientComponent.jsx";
 import * as strings from "../../utils/strings.js";
 import PropTypes from "prop-types";
-import {toJsonPretty} from "../../utils/strings.js";
 import Input from "../base/Input.jsx";
 import Button from "../base/Button.jsx";
 import {useState} from "react";
+import {logComponentRendering} from "../../utils/log.js";
 
 RecipeComponent.propTypes = {
     id: PropTypes.string.isRequired,
@@ -15,7 +15,7 @@ RecipeComponent.propTypes = {
 };
 
 export default function RecipeComponent(props) {
-    console.log(`Rendering RecipeComponent ${toJsonPretty(props)}`);
+    logComponentRendering(props);
 
     const {id, name, ingredients, isModifiable, onCloseHandler} = props;
     const [recipeName, setRecipeName] = useState("");
@@ -62,7 +62,8 @@ export default function RecipeComponent(props) {
             }
             {
                 isModifiable
-                    ? <footer>
+                    ?
+                    <footer>
                         <div className={"flex flex-row space-x-4"}>
                             <Button value={"Cancel"} className={"secondary"} onClick={cancelHandler}/>
                             <Button value={"Save"} onClick={saveHandler}/>

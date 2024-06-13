@@ -2,7 +2,7 @@ import * as uuid from "uuid";
 import PropTypes from "prop-types";
 
 Button.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
 };
 
 export default function Button(

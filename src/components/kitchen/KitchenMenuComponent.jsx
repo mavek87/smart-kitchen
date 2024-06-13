@@ -3,8 +3,11 @@ import {useState} from "react";
 import RecipeComponent from "../recipe/RecipeComponent.jsx";
 import * as uuid from "uuid";
 import Button from "../base/Button.jsx";
+import {logComponentRendering} from "../../utils/log.js";
 
-function KitchenMenu() {
+function KitchenMenuComponent(props) {
+    logComponentRendering(props);
+
     const [isModalAddRecipeOpen, setModalAddRecipeOpen] = useState(false);
 
     const addRecipeHandler = () => {
@@ -48,4 +51,4 @@ function KitchenMenu() {
     );
 }
 
-export default KitchenMenu;
+export default KitchenMenuComponent;

@@ -3,7 +3,7 @@ import Input from "../base/Input.jsx";
 import {useState} from "react";
 import * as uuid from "uuid";
 import PropTypes from "prop-types";
-import {toJsonPretty} from "../../utils/strings.js";
+import {logComponentRendering} from "../../utils/log.js";
 
 const ingredientQuantityUnitsArray = [
     {id: 1, value: "g", text: "Grams"},
@@ -19,7 +19,7 @@ IngredientComponent.propTypes = {
 };
 
 export default function IngredientComponent(props) {
-    console.log(`Rendering IngredientComponent ${toJsonPretty(props)}`);
+    logComponentRendering(props);
 
     const {
         id = uuid.v4(),
@@ -70,7 +70,7 @@ export default function IngredientComponent(props) {
                           data={ingredientQuantityUnitsArray}
                           placeholder={"ingredient quantity unit"}
                           onChangeSelectionHandler={onChangeIngredientQuantityUnitHandler}
-                          isEnabled={isEnabled}
+                          disabled={!isEnabled}
                 />
             </div>
         </section>
