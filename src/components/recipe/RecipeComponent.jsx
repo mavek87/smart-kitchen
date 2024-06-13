@@ -18,7 +18,6 @@ export default function RecipeComponent(props) {
     console.log(`Rendering RecipeComponent ${toJsonPretty(props)}`);
 
     const {id, name, ingredients, isModifiable, onCloseHandler} = props;
-
     const [recipeName, setRecipeName] = useState("");
 
     const saveHandler = () => {
@@ -44,8 +43,8 @@ export default function RecipeComponent(props) {
         </li>
     ));
 
-    const recipeHeader = isModifiable
-        ? <Input
+    const recipeHeader = isModifiable ?
+        <Input
             type={"text"}
             placeholder={"Recipe name"}
             value={recipeName}

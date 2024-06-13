@@ -8,12 +8,10 @@ function KitchenMenu() {
     const [isModalAddRecipeOpen, setModalAddRecipeOpen] = useState(false);
 
     const addRecipeHandler = () => {
-        console.log("addRecipeHandler");
         setModalAddRecipeOpen(true);
     }
 
     const closeAddRecipeHandler = () => {
-        console.log("closeAddRecipeHandler");
         setModalAddRecipeOpen(false);
     }
 
@@ -32,12 +30,12 @@ function KitchenMenu() {
             <div className={"flex flex-row space-x-4"}>
                 <Button value={"Add Recipe"} onClick={addRecipeHandler}/>
             </div>
-            {/*TODO: use portal?*/}
             <Modal
                 title="Add Recipe"
                 content={
                     <RecipeComponent
-                        id={uuid.v4()} name={""}
+                        id={ingredient.id}
+                        name={""}
                         ingredients={ingredients}
                         isModifiable={true}
                         onCloseHandler={closeAddRecipeHandler}

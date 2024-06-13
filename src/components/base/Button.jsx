@@ -1,6 +1,10 @@
 import * as uuid from "uuid";
+import PropTypes from "prop-types";
 
-// TODO: add prop types
+Button.propTypes = {
+    id: PropTypes.string.isRequired,
+};
+
 export default function Button(
     {
         id = uuid.v4(),
@@ -11,6 +15,7 @@ export default function Button(
         <input
             id={id}
             type={"button"}
-            {...restOfProps} />
+            {...restOfProps}
+        />
     );
 }
