@@ -5,6 +5,7 @@ import * as uuid from "uuid";
 import PropTypes from "prop-types";
 import {logComponentRendering} from "../../utils/log.js";
 import ButtonSmall from "../base/ButtonSmall.jsx";
+import Modal from "../base/Modal.jsx";
 
 const ingredientQuantityUnitsArray = [
     {id: 1, value: "g", text: "Grams"},
@@ -27,7 +28,7 @@ export default function IngredientComponent(props) {
         name = undefined,
         quantity = 0,
         ingredientQuantityUnit = "g",
-        isEnabled = true
+        isEnabled
     } = props;
 
     const [ingredientId] = useState(id);
@@ -35,9 +36,19 @@ export default function IngredientComponent(props) {
     const [ingredientQuantity, setIngredientQuantity] = useState(quantity);
     const [, setIngredientQuantityUnit] = useState(ingredientQuantityUnit);
 
+    const [isModalEditRecipeOpen, setModalAddRecipeOpen] = useState(false);
+
+    const editIngredientHandler = () => {
+        setModalAddRecipeOpen(true);
+    }
+
+    const closeEditIngredientHandler = () => {
+        setModalAddRecipeOpen(false);
+    }
+
     return (
         <section id={ingredientId}>
-            <div className={"flex flex-col justify-evenly md:flex-row md:space-x-4"}>
+            <div className={"flex flex-col justify-around md:flex-row md:space-x-4"}>
                 <Input
                     id={`ingredient-name-${ingredientId}`}
                     type="text"
@@ -64,7 +75,34 @@ export default function IngredientComponent(props) {
                           onChange={event => setIngredientQuantityUnit(event.target.value)}
                           disabled={!isEnabled}
                 />
-                <ButtonSmall className={"h-12 primary text-sm"}>Edit</ButtonSmall>
+                {
+                    isEnabled
+                        ? null
+                        : <>
+                            <ButtonSmall
+                                className={"h-12 primary text-sm"}
+                                onClick={editIngredientHandler}
+                            >
+                                Edit
+                            </ButtonSmall>
+                            <Modal
+                                title={`Edit ingredient '${name}'`}
+                                content={
+                                    <article className={"max-w-6xl"}>
+                                        <IngredientComponent
+                                            id={id}
+                                            name={name}
+                                            quantity={quantity}
+                                            ingredientQuantityUnit={ingredientQuantityUnit}
+                                            isEnabled={true}
+                                        />
+                                    </article>
+                                }
+                                isOpen={isModalEditRecipeOpen}
+                                onCloseHandler={closeEditIngredientHandler}
+                            />
+                        </>
+                }
                 <ButtonSmall className={"h-12 secondary text-sm"}>Delete</ButtonSmall>
             </div>
         </section>
