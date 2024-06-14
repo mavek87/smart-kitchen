@@ -1,10 +1,23 @@
 import * as uuid from "uuid";
+import PropTypes from "prop-types";
 
-// TODO: remove type and placeholder and make work ...restProps
+Combobox.propTypes = {
+    id: PropTypes.string,
+    data: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        value: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired
+    })).isRequired,
+    label: PropTypes.string,
+    onChangeSelectionHandler: PropTypes.func,
+    selectClasses: PropTypes.string,
+    optionsClasses: PropTypes.string
+}
+
 export default function Combobox(
     {
-        data,
         id = uuid.v4(),
+        data,
         label,
         onChangeSelectionHandler,
         selectClasses,

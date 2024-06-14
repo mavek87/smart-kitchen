@@ -5,7 +5,7 @@ import {logComponentRendering} from "../../utils/log.js";
 
 KitchenComponent.propTypes = {
     kitchen: PropTypes.shape({
-        recipes: PropTypes.arrayOf(PropTypes.object).isRequired
+        recipes: PropTypes.arrayOf(PropTypes.shape({...RecipeComponent.propTypes})).isRequired
     })
 };
 

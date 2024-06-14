@@ -6,5 +6,5 @@ ButtonSmall.propTypes = {
 };
 
 export default function ButtonSmall({id, children, ...restOfProps}) {
-    return <button id={id}{...restOfProps} >{children}</button>;
+    return <button id={id} {...restOfProps}>{children}</button>;
 }

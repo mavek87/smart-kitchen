@@ -9,7 +9,7 @@ import {logComponentRendering} from "../../utils/log.js";
 RecipeComponent.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    ingredients: PropTypes.arrayOf(PropTypes.instanceOf(IngredientComponent)).isRequired,
+    ingredients: PropTypes.arrayOf(PropTypes.shape({...IngredientComponent.propTypes})).isRequired,
     isModifiable: IngredientComponent.propTypes.isEnabled,
     onCloseHandler: PropTypes.func
 };
