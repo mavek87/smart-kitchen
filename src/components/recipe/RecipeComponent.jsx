@@ -56,7 +56,7 @@ export default function RecipeComponent(props) {
         <article className={"max-w-6xl"}>
             <header>{recipeHeader}</header>
             {
-                ingredients && ingredients.length > 0
+                (ingredients?.length ?? 0) > 0
                     ? <ol>{jsxIngredients}</ol>
                     : null
             }

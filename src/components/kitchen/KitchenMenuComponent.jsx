@@ -18,15 +18,12 @@ function KitchenMenuComponent(props) {
         setModalAddRecipeOpen(false);
     }
 
-    const ingredient = {
+    const ingredients = [{
         id: uuid.v4(),
         name: "",
         quantity: 0,
         ingredientQuantityUnit: "g"
-    }
-
-    const ingredients = [];
-    ingredients.push(ingredient);
+    }];
 
     return (
         <>
@@ -37,7 +34,7 @@ function KitchenMenuComponent(props) {
                 title="Add Recipe"
                 content={
                     <RecipeComponent
-                        id={ingredient.id}
+                        id={uuid.v4()}
                         name={""}
                         ingredients={ingredients}
                         isModifiable={true}
