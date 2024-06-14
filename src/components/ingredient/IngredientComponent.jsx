@@ -1,12 +1,12 @@
-import Combobox from "../base/Combobox.jsx";
-import Input from "../base/Input.jsx";
 import {useState} from "react";
 import * as uuid from "uuid";
 import PropTypes from "prop-types";
 import {logComponentRendering} from "../../utils/log.js";
-import ButtonSmall from "../base/ButtonSmall.jsx";
-import Modal from "../base/Modal.jsx";
-import SaveCancelButtons from "../save_cancel_buttons/SaveCancelButtons.jsx";
+import Input from "../ui/base/Input.jsx";
+import Combobox from "../ui/base/Combobox.jsx";
+import ButtonSmall from "../ui/base/ButtonSmall.jsx";
+import Modal from "../ui/base/Modal.jsx";
+import SaveCancelButtons from "../ui/save_cancel_buttons/SaveCancelButtons.jsx";
 
 const ingredientQuantityUnitsArray = [
     {id: 1, value: "g", text: "Grams"},

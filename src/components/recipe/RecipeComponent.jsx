@@ -1,10 +1,10 @@
 import IngredientComponent from "../ingredient/IngredientComponent.jsx";
 import * as strings from "../../utils/strings.js";
 import PropTypes from "prop-types";
-import Input from "../base/Input.jsx";
 import {useState} from "react";
 import {logComponentRendering} from "../../utils/log.js";
-import SaveCancelButtons from "../save_cancel_buttons/SaveCancelButtons.jsx";
+import SaveCancelButtons from "../ui/save_cancel_buttons/SaveCancelButtons.jsx";
+import Input from "../ui/base/Input.jsx";
 
 RecipeComponent.propTypes = {
     id: PropTypes.string.isRequired,

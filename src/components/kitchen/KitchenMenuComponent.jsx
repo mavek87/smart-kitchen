@@ -1,9 +1,9 @@
-import Modal from "../base/Modal.jsx";
 import {useState} from "react";
 import RecipeComponent from "../recipe/RecipeComponent.jsx";
 import * as uuid from "uuid";
-import ButtonLarge from "../base/ButtonLarge.jsx";
 import {logComponentRendering} from "../../utils/log.js";
+import ButtonLarge from "../ui/base/ButtonLarge.jsx";
+import Modal from "../ui/base/Modal.jsx";
 
 function KitchenMenuComponent(props) {
     logComponentRendering(props);
