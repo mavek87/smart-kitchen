@@ -63,11 +63,10 @@ export default function RecipeComponent(props) {
             {
                 isModifiable
                     ?
-                    <footer>
-                        <div className={"flex flex-row space-x-4"}>
-                            <ButtonLarge value={"Cancel"} className={"secondary"} onClick={cancelHandler}/>
-                            <ButtonLarge value={"Save Recipe"} onClick={saveHandler}/>
-                        </div>
+                    <footer className={"flex flex-row space-x-4"}>
+                        {/*TODO: remove duplication with a component */}
+                        <ButtonLarge value={"Cancel"} className={"secondary"} onClick={cancelHandler}/>
+                        <ButtonLarge value={"Save Recipe"} onClick={saveHandler}/>
                     </footer>
                     : null
             }

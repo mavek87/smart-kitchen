@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import {logComponentRendering} from "../../utils/log.js";
 import ButtonSmall from "../base/ButtonSmall.jsx";
 import Modal from "../base/Modal.jsx";
+import ButtonLarge from "../base/ButtonLarge.jsx";
 
 const ingredientQuantityUnitsArray = [
     {id: 1, value: "g", text: "Grams"},
@@ -96,6 +97,18 @@ export default function IngredientComponent(props) {
                                             ingredientQuantityUnit={ingredientQuantityUnit}
                                             isEnabled={true}
                                         />
+                                        {/*TODO: remove duplication with a component */}
+                                        <footer className={"flex flex-row space-x-4"}>
+                                            <ButtonLarge
+                                                className={"secondary"}
+                                                value={"Cancel"}
+                                                onClick={closeEditIngredientHandler}
+                                            />
+                                            <ButtonLarge
+                                                className={"primary"}
+                                                value={"Save Ingredient"}
+                                            />
+                                        </footer>
                                     </article>
                                 }
                                 isOpen={isModalEditRecipeOpen}
