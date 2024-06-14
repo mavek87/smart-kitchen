@@ -64,6 +64,6 @@ export const recipeMatriciana = {
     ]
 }
 
-const recipes = [recipeCarbonara, recipeMatriciana];
+const recipesData = [recipeCarbonara, recipeMatriciana];
 
-export default recipes;
+export default recipesData;

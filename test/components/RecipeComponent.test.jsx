@@ -3,7 +3,7 @@ import {render, screen} from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 import * as uuid from "uuid";
 import RecipeComponent from "../../src/components/recipe/RecipeComponent.jsx";
-import {recipeCarbonara} from "../../src/domain/recipes.js";
+import {recipeCarbonara} from "../../src/domain/recipesData.js";
 
 describe("Ingredient Component Tests", () => {
 

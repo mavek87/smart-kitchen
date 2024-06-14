@@ -4,17 +4,15 @@ import KitchenMenuComponent from "./KitchenMenuComponent.jsx";
 import {logComponentRendering} from "../../utils/log.js";
 
 KitchenComponent.propTypes = {
-    kitchen: PropTypes.shape({
-        recipes: PropTypes.arrayOf(PropTypes.shape({...RecipeComponent.propTypes})).isRequired
-    })
+    recipes: PropTypes.arrayOf(PropTypes.shape({...RecipeComponent.propTypes})).isRequired
 };
 
 export default function KitchenComponent(props) {
     logComponentRendering(props);
 
-    const {kitchen} = props;
+    const {recipes} = props;
 
-    const recipes = kitchen.recipes.map((recipe) => (
+    const recipesComponents = recipes.map((recipe) => (
         <div key={recipe.id}>
             <RecipeComponent
                 id={recipe.id}
@@ -27,11 +25,11 @@ export default function KitchenComponent(props) {
 
     return <section>
         {
-            recipes.length > 0
+            recipesComponents.length > 0
                 ?
                 <>
                     <KitchenMenuComponent/>
-                    {recipes}
+                    {recipesComponents}
                 </>
                 : null
         }

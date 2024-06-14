@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 SaveCancelButtons.propTypes = {
     cancelButtonText: PropTypes.string,
     saveButtonText: PropTypes.string,
-    cancelHandler: PropTypes.func.required,
-    saveHandler: PropTypes.func.required
+    cancelHandler: PropTypes.func.isRequired,
+    saveHandler: PropTypes.func.isRequired
 }
 
 export default function SaveCancelButtons({cancelButtonText = "Cancel", saveButtonText = "Save", cancelHandler, saveHandler}) {
