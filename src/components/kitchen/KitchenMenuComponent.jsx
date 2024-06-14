@@ -2,7 +2,7 @@ import Modal from "../base/Modal.jsx";
 import {useState} from "react";
 import RecipeComponent from "../recipe/RecipeComponent.jsx";
 import * as uuid from "uuid";
-import Button from "../base/Button.jsx";
+import ButtonLarge from "../base/ButtonLarge.jsx";
 import {logComponentRendering} from "../../utils/log.js";
 
 function KitchenMenuComponent(props) {
@@ -31,7 +31,7 @@ function KitchenMenuComponent(props) {
     return (
         <>
             <div className={"flex flex-row space-x-4"}>
-                <Button value={"Add Recipe"} onClick={addRecipeHandler}/>
+                <ButtonLarge value={"Add Recipe"} onClick={addRecipeHandler}/>
             </div>
             <Modal
                 title="Add Recipe"

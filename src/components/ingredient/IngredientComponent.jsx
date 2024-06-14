@@ -4,6 +4,7 @@ import {useState} from "react";
 import * as uuid from "uuid";
 import PropTypes from "prop-types";
 import {logComponentRendering} from "../../utils/log.js";
+import ButtonSmall from "../base/ButtonSmall.jsx";
 
 const ingredientQuantityUnitsArray = [
     {id: 1, value: "g", text: "Grams"},
@@ -34,21 +35,6 @@ export default function IngredientComponent(props) {
     const [ingredientQuantity, setIngredientQuantity] = useState(quantity);
     const [, setIngredientQuantityUnit] = useState(ingredientQuantityUnit);
 
-    const onChangeIngredientNameHandler = (ingredientName) => {
-        console.log(ingredientName);
-        setIngredientName(ingredientName);
-    }
-
-    const onChangeIngredientQuantityHandler = (ingredientQuantity) => {
-        console.log(ingredientQuantity);
-        setIngredientQuantity(ingredientQuantity);
-    }
-
-    const onChangeIngredientQuantityUnitHandler = (ingredientQuantityAmount) => {
-        console.log(ingredientQuantityAmount);
-        setIngredientQuantityUnit(ingredientQuantityAmount);
-    }
-
     return (
         <section id={ingredientId}>
             <div className={"flex flex-col justify-evenly md:flex-row md:space-x-4"}>
@@ -58,7 +44,7 @@ export default function IngredientComponent(props) {
                     value={ingredientName}
                     placeholder={"ingredient name"}
                     className={"text-sm"}
-                    onChange={event => onChangeIngredientNameHandler(event.target.value)}
+                    onChange={event => setIngredientName(event.target.value)}
                     readOnly={!isEnabled}
                 />
                 <Input
@@ -68,18 +54,18 @@ export default function IngredientComponent(props) {
                     placeholder={"ingredient quantity"}
                     min={0}
                     className={"text-sm"}
-                    onChange={event => onChangeIngredientQuantityHandler(event.target.value)}
+                    onChange={event => setIngredientQuantity(event.target.value)}
                     readOnly={!isEnabled}
                 />
                 <Combobox id={`ingredient-quantity-unit-${ingredientId}`}
                           data={ingredientQuantityUnitsArray}
                           placeholder={"ingredient quantity unit"}
                           className={"text-sm"}
-                          onChange={event => onChangeIngredientQuantityUnitHandler(event.target.value)}
+                          onChange={event => setIngredientQuantityUnit(event.target.value)}
                           disabled={!isEnabled}
                 />
-                <button className={"h-12 primary text-sm"}>Edit</button>
-                <button className={"h-12 secondary text-sm"}>Delete</button>
+                <ButtonSmall className={"h-12 primary text-sm"}>Edit</ButtonSmall>
+                <ButtonSmall className={"h-12 secondary text-sm"}>Delete</ButtonSmall>
             </div>
         </section>
     )

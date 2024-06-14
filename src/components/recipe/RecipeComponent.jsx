@@ -2,7 +2,7 @@ import IngredientComponent from "../ingredient/IngredientComponent.jsx";
 import * as strings from "../../utils/strings.js";
 import PropTypes from "prop-types";
 import Input from "../base/Input.jsx";
-import Button from "../base/Button.jsx";
+import ButtonLarge from "../base/ButtonLarge.jsx";
 import {useState} from "react";
 import {logComponentRendering} from "../../utils/log.js";
 
@@ -65,8 +65,8 @@ export default function RecipeComponent(props) {
                     ?
                     <footer>
                         <div className={"flex flex-row space-x-4"}>
-                            <Button value={"Cancel"} className={"secondary"} onClick={cancelHandler}/>
-                            <Button value={"Save"} onClick={saveHandler}/>
+                            <ButtonLarge value={"Cancel"} className={"secondary"} onClick={cancelHandler}/>
+                            <ButtonLarge value={"Save"} onClick={saveHandler}/>
                         </div>
                     </footer>
                     : null
