@@ -2,9 +2,9 @@ import IngredientComponent from "../ingredient/IngredientComponent.jsx";
 import * as strings from "../../utils/strings.js";
 import PropTypes from "prop-types";
 import Input from "../base/Input.jsx";
-import ButtonLarge from "../base/ButtonLarge.jsx";
 import {useState} from "react";
 import {logComponentRendering} from "../../utils/log.js";
+import SaveCancelButtons from "../save_cancel_buttons/SaveCancelButtons.jsx";
 
 RecipeComponent.propTypes = {
     id: PropTypes.string.isRequired,
@@ -64,9 +64,11 @@ export default function RecipeComponent(props) {
                 isModifiable
                     ?
                     <footer className={"flex flex-row space-x-4"}>
-                        {/*TODO: remove duplication with a component */}
-                        <ButtonLarge value={"Cancel"} className={"secondary"} onClick={cancelHandler}/>
-                        <ButtonLarge value={"Save Recipe"} onClick={saveHandler}/>
+                        <SaveCancelButtons
+                            saveButtonText={"Save Recipe"}
+                            saveHandler={saveHandler}
+                            cancelHandler={cancelHandler}
+                        />
                     </footer>
                     : null
             }
