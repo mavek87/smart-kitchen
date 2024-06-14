@@ -3,8 +3,8 @@ import * as strings from "../../utils/strings.js";
 import PropTypes from "prop-types";
 import {useState} from "react";
 import {logComponentRendering} from "../../utils/log.js";
-import SaveCancelButtons from "../ui/save_cancel_buttons/SaveCancelButtons.jsx";
 import Input from "../ui/base/Input.jsx";
+import SaveCancelButtons from "../ui/composed/save_cancel_buttons/SaveCancelButtons.jsx";
 
 RecipeComponent.propTypes = {
     id: PropTypes.string.isRequired,

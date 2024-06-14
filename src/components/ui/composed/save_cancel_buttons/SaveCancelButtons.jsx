@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import ButtonLarge from "../base/ButtonLarge.jsx";
+import ButtonLarge from "../../base/ButtonLarge.jsx";
 
 SaveCancelButtons.propTypes = {
     cancelButtonText: PropTypes.string,

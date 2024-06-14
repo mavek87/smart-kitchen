@@ -5,8 +5,7 @@ import {logComponentRendering} from "../../utils/log.js";
 import Input from "../ui/base/Input.jsx";
 import Combobox from "../ui/base/Combobox.jsx";
 import ButtonSmall from "../ui/base/ButtonSmall.jsx";
-import Modal from "../ui/base/Modal.jsx";
-import SaveCancelButtons from "../ui/save_cancel_buttons/SaveCancelButtons.jsx";
+import ModalEditIngredient from "../ui/composed/modals/ModalEditIngredient.jsx";
 
 const ingredientQuantityUnitsArray = [
     {id: 1, value: "g", text: "Grams"},
@@ -86,28 +85,17 @@ export default function IngredientComponent(props) {
                             >
                                 Edit
                             </ButtonSmall>
-                            <Modal
-                                title={`Edit ingredient '${name}'`}
-                                content={
-                                    <article className={"max-w-6xl"}>
-                                        <IngredientComponent
-                                            id={id}
-                                            name={name}
-                                            quantity={quantity}
-                                            ingredientQuantityUnit={ingredientQuantityUnit}
-                                            isEnabled={true}
-                                        />
-                                        <footer className={"flex flex-row space-x-4"}>
-                                            <SaveCancelButtons
-                                                saveButtonText={"Save Ingredient"}
-                                                saveHandler={() => {}}
-                                                cancelHandler={closeEditIngredientHandler}
-                                            />
-                                        </footer>
-                                    </article>
-                                }
+                            <ModalEditIngredient
+                                ingredient={{
+                                    id: ingredientId,
+                                    name: ingredientName,
+                                    quantity: ingredientQuantity,
+                                    ingredientQuantityUnit: ingredientQuantityUnit
+                                }}
+                                saveHandler={() => {
+                                }}
+                                cancelHandler={closeEditIngredientHandler}
                                 isOpen={isModalEditRecipeOpen}
-                                onCloseHandler={closeEditIngredientHandler}
                             />
                         </>
                 }
