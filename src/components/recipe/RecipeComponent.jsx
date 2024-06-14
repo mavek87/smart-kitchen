@@ -53,7 +53,7 @@ export default function RecipeComponent(props) {
         : <h3>{name ? strings.capitalize(name) : "Unknown recipeName"}</h3>
 
     return (
-        <article>
+        <article className={"max-w-6xl"}>
             <header>{recipeHeader}</header>
             {
                 ingredients && ingredients.length > 0
@@ -66,7 +66,7 @@ export default function RecipeComponent(props) {
                     <footer>
                         <div className={"flex flex-row space-x-4"}>
                             <ButtonLarge value={"Cancel"} className={"secondary"} onClick={cancelHandler}/>
-                            <ButtonLarge value={"Save"} onClick={saveHandler}/>
+                            <ButtonLarge value={"Save Recipe"} onClick={saveHandler}/>
                         </div>
                     </footer>
                     : null

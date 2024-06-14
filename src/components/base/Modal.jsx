@@ -17,12 +17,12 @@ export default function Modal(
         }
     }
 ) {
-    const modalContent = <article>
+    const modalContent = <article className={"max-w-6xl"}>
         <header>
             <button aria-label="Close" rel="prev" onClick={onCloseHandler}/>
             <h4>{title}</h4>
         </header>
-        <p>{content}</p>
+        <div className={"flex justify-center"}>{content}</div>
     </article>
 
     const dialog = isOpen
