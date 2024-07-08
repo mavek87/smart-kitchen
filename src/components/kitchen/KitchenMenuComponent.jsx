@@ -4,17 +4,18 @@ import * as uuid from "uuid";
 import {logComponentRendering} from "../../utils/log.js";
 import ButtonLarge from "../ui/base/ButtonLarge.jsx";
 import Modal from "../ui/base/Modal.jsx";
-import PropTypes from "prop-types";
 
-KitchenMenuComponent.propTypes = {
-    onDeleteIngredient: PropTypes.func.isRequired
-};
+const initialStateIngredients = [{
+    id: uuid.v4(),
+    name: "",
+    quantity: 0,
+    ingredientQuantityUnit: "g"
+}];
 
 function KitchenMenuComponent(props) {
     logComponentRendering(props);
 
-    const {onDeleteIngredient} = props;
-
+    const [ingredients, setIngredients] = useState(initialStateIngredients);
     const [isModalAddRecipeOpen, setModalAddRecipeOpen] = useState(false);
 
     const addRecipeHandler = () => {
@@ -23,14 +24,14 @@ function KitchenMenuComponent(props) {
 
     const closeAddRecipeHandler = () => {
         setModalAddRecipeOpen(false);
+        setIngredients(initialStateIngredients);
     }
 
-    const ingredients = [{
-        id: uuid.v4(),
-        name: "",
-        quantity: 0,
-        ingredientQuantityUnit: "g"
-    }];
+    const onDeleteNotSavedIngredientHandler = (recipeId, ingredientId) => {
+        setIngredients(oldIngredients =>
+            oldIngredients.filter(ingredient => ingredient.id !== ingredientId)
+        );
+    }
 
     return (
         <>
@@ -41,12 +42,12 @@ function KitchenMenuComponent(props) {
                 title="Add Recipe"
                 content={
                     <RecipeComponent
-                        id={uuid.v4()}
-                        name={""}
+                        id={initialStateIngredients[0].id}
+                        name={initialStateIngredients[0].name}
                         ingredients={ingredients}
-                        isRecipeModifiable={true}
+                        isRecipeEditable={true}
                         onCloseRecipe={closeAddRecipeHandler}
-                        onDeleteIngredient={onDeleteIngredient}
+                        onDeleteIngredient={onDeleteNotSavedIngredientHandler}
                     />
                 }
                 isModalOpen={isModalAddRecipeOpen}

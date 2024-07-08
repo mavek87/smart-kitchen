@@ -10,7 +10,7 @@ RecipeComponent.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf(PropTypes.shape({...IngredientComponent.propTypes})).isRequired,
-    isRecipeModifiable: IngredientComponent.propTypes.isEnabled,
+    isRecipeEditable: IngredientComponent.propTypes.isEnabled,
     onCloseRecipe: PropTypes.func,
     onDeleteIngredient: PropTypes.func
 };
@@ -18,7 +18,7 @@ RecipeComponent.propTypes = {
 export default function RecipeComponent(props) {
     logComponentRendering(props);
 
-    const {id, name, ingredients, isRecipeModifiable, onCloseRecipe, onDeleteIngredient} = props;
+    const {id, name, ingredients, isRecipeEditable, onCloseRecipe, onDeleteIngredient} = props;
     const [recipeName, setRecipeName] = useState("");
 
     const saveHandler = () => {
@@ -41,12 +41,12 @@ export default function RecipeComponent(props) {
                 quantity={ingredient.quantity}
                 ingredientQuantityUnit={ingredient.ingredientQuantityUnit}
                 onDeleteIngredient={onDeleteIngredient}
-                isEnabled={isRecipeModifiable}
+                isEnabled={isRecipeEditable}
             />
         </li>
     ));
 
-    const recipeHeader = isRecipeModifiable ?
+    const recipeHeader = isRecipeEditable ?
         <Input
             type={"text"}
             placeholder={"Recipe name"}
@@ -64,7 +64,7 @@ export default function RecipeComponent(props) {
                     : null
             }
             {
-                isRecipeModifiable
+                isRecipeEditable
                     ?
                     <footer className={"flex flex-row space-x-4"}>
                         <SaveCancelButtons

@@ -13,7 +13,7 @@ ModalEditIngredient.propTypes = {
     }),
     onSaveIngredient: PropTypes.func.isRequired,
     onCancelEditIngredient: PropTypes.func.isRequired,
-    onDeleteIngredient: PropTypes.func.isRequired,
+    onDeleteIngredient: PropTypes.func,
     isModalOpen: PropTypes.bool,
 };
 

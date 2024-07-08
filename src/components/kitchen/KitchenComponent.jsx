@@ -5,7 +5,7 @@ import {logComponentRendering} from "../../utils/log.js";
 
 KitchenComponent.propTypes = {
     recipes: PropTypes.arrayOf(PropTypes.shape({...RecipeComponent.propTypes})).isRequired,
-    onDeleteIngredient: PropTypes.func.isRequired
+    onDeleteIngredient: PropTypes.func
 };
 
 export default function KitchenComponent(props) {
@@ -19,7 +19,7 @@ export default function KitchenComponent(props) {
                 id={recipe.id}
                 name={recipe.name}
                 ingredients={recipe.ingredients}
-                isRecipeModifiable={false}
+                isRecipeEditable={false}
                 onDeleteIngredient={onDeleteIngredient}
             />
         </div>
@@ -30,7 +30,7 @@ export default function KitchenComponent(props) {
             recipesComponents.length > 0
                 ?
                 <>
-                    <KitchenMenuComponent onDeleteIngredient={onDeleteIngredient}/>
+                    <KitchenMenuComponent />
                     {recipesComponents}
                 </>
                 : null

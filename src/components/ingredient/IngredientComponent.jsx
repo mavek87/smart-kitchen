@@ -13,13 +13,13 @@ const ingredientQuantityUnitsArray = [
 ]
 
 IngredientComponent.propTypes = {
-    recipeId: PropTypes.string.isRequired,
+    recipeId: PropTypes.string,
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     ingredientQuantityUnit: PropTypes.string.isRequired,
     isEnabled: PropTypes.bool,
-    onDeleteIngredient: PropTypes.func.isRequired
+    onDeleteIngredient: PropTypes.func
 };
 
 export default function IngredientComponent(props) {
