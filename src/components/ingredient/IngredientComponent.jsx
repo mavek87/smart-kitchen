@@ -13,22 +13,26 @@ const ingredientQuantityUnitsArray = [
 ]
 
 IngredientComponent.propTypes = {
+    recipeId: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     ingredientQuantityUnit: PropTypes.string.isRequired,
-    isEnabled: PropTypes.bool
+    isEnabled: PropTypes.bool,
+    onDeleteIngredient: PropTypes.func.isRequired
 };
 
 export default function IngredientComponent(props) {
     logComponentRendering(props);
 
     const {
+        recipeId = undefined,
         id = uuid.v4(),
         name = undefined,
         quantity = 0,
         ingredientQuantityUnit = "g",
-        isEnabled
+        isEnabled,
+        onDeleteIngredient
     } = props;
 
     const [ingredientId] = useState(id);
@@ -86,20 +90,22 @@ export default function IngredientComponent(props) {
                                 Edit
                             </ButtonSmall>
                             <ModalEditIngredient
+                                recipeId={recipeId}
                                 ingredient={{
                                     id: ingredientId,
                                     name: ingredientName,
                                     quantity: ingredientQuantity,
                                     ingredientQuantityUnit: ingredientQuantityUnit
                                 }}
-                                saveHandler={() => {
+                                onSaveIngredient={() => {
                                 }}
-                                cancelHandler={closeEditIngredientHandler}
-                                isOpen={isModalEditRecipeOpen}
+                                onDeleteIngredient={onDeleteIngredient}
+                                onCancelEditIngredient={closeEditIngredientHandler}
+                                isModalOpen={isModalEditRecipeOpen}
                             />
                         </>
                 }
-                <ButtonSmall className={"h-12 secondary text-sm"}>Delete</ButtonSmall>
+                <ButtonSmall className={"h-12 secondary text-sm"} onClick={() => onDeleteIngredient(recipeId, ingredientId)}>Delete</ButtonSmall>
             </div>
         </section>
     )

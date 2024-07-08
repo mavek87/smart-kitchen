@@ -5,27 +5,27 @@ Modal.propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.object.isRequired,
     isOpen: PropTypes.bool,
-    onCloseHandler: PropTypes.func
+    onCloseModal: PropTypes.func
 };
 
 export default function Modal(
     {
         title,
         content,
-        isOpen = false,
-        onCloseHandler = () => {
+        isModalOpen = false,
+        onCloseModal = () => {
         }
     }
 ) {
     const modalContent = <article className={"max-w-6xl"}>
         <header>
-            <button aria-label="Close" rel="prev" onClick={onCloseHandler}/>
+            <button aria-label="Close" rel="prev" onClick={onCloseModal}/>
             <h4>{title}</h4>
         </header>
         <div className={"flex justify-center"}>{content}</div>
     </article>
 
-    const dialog = isOpen
+    const dialog = isModalOpen
         ? <dialog open>{modalContent}</dialog>
         : null
 

@@ -4,9 +4,16 @@ import * as uuid from "uuid";
 import {logComponentRendering} from "../../utils/log.js";
 import ButtonLarge from "../ui/base/ButtonLarge.jsx";
 import Modal from "../ui/base/Modal.jsx";
+import PropTypes from "prop-types";
+
+KitchenMenuComponent.propTypes = {
+    onDeleteIngredient: PropTypes.func.isRequired
+};
 
 function KitchenMenuComponent(props) {
     logComponentRendering(props);
+
+    const {onDeleteIngredient} = props;
 
     const [isModalAddRecipeOpen, setModalAddRecipeOpen] = useState(false);
 
@@ -37,12 +44,13 @@ function KitchenMenuComponent(props) {
                         id={uuid.v4()}
                         name={""}
                         ingredients={ingredients}
-                        isModifiable={true}
-                        onCloseHandler={closeAddRecipeHandler}
+                        isRecipeModifiable={true}
+                        onCloseRecipe={closeAddRecipeHandler}
+                        onDeleteIngredient={onDeleteIngredient}
                     />
                 }
-                isOpen={isModalAddRecipeOpen}
-                onCloseHandler={closeAddRecipeHandler}
+                isModalOpen={isModalAddRecipeOpen}
+                onCloseModal={closeAddRecipeHandler}
             />
         </>
     );

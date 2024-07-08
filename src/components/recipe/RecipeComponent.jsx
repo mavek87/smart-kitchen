@@ -10,14 +10,15 @@ RecipeComponent.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf(PropTypes.shape({...IngredientComponent.propTypes})).isRequired,
-    isModifiable: IngredientComponent.propTypes.isEnabled,
-    onCloseHandler: PropTypes.func
+    isRecipeModifiable: IngredientComponent.propTypes.isEnabled,
+    onCloseRecipe: PropTypes.func,
+    onDeleteIngredient: PropTypes.func
 };
 
 export default function RecipeComponent(props) {
     logComponentRendering(props);
 
-    const {id, name, ingredients, isModifiable, onCloseHandler} = props;
+    const {id, name, ingredients, isRecipeModifiable, onCloseRecipe, onDeleteIngredient} = props;
     const [recipeName, setRecipeName] = useState("");
 
     const saveHandler = () => {
@@ -26,24 +27,26 @@ export default function RecipeComponent(props) {
 
     const cancelHandler = () => {
         console.log(`Cancel Recipe ${recipeName}`);
-        if (onCloseHandler) {
-            onCloseHandler();
+        if (onCloseRecipe) {
+            onCloseRecipe();
         }
     }
 
     const jsxIngredients = ingredients.map((ingredient) => (
         <li key={`${id}-${ingredient.id}`}>
             <IngredientComponent
+                recipeId={id}
                 id={ingredient.id}
                 name={ingredient.name}
                 quantity={ingredient.quantity}
                 ingredientQuantityUnit={ingredient.ingredientQuantityUnit}
-                isEnabled={isModifiable}
+                onDeleteIngredient={onDeleteIngredient}
+                isEnabled={isRecipeModifiable}
             />
         </li>
     ));
 
-    const recipeHeader = isModifiable ?
+    const recipeHeader = isRecipeModifiable ?
         <Input
             type={"text"}
             placeholder={"Recipe name"}
@@ -61,7 +64,7 @@ export default function RecipeComponent(props) {
                     : null
             }
             {
-                isModifiable
+                isRecipeModifiable
                     ?
                     <footer className={"flex flex-row space-x-4"}>
                         <SaveCancelButtons
