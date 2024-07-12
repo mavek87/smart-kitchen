@@ -24,10 +24,19 @@ function App() {
         })
     }
 
+    const onAddRecipeHandler = (recipe) => {
+        setRecipes(oldRecipes => {
+           return {
+               ...oldRecipes,
+               recipe
+           }
+        });
+    }
+
     return (
         <article className={"mt-5"}>
             <header className={"text-center"}><h1>Smart Kitchen</h1></header>
-            <KitchenComponent recipes={recipes} onDeleteIngredient={onDeleteIngredientHandler}/>
+            <KitchenComponent recipes={recipes} onAddRecipe={onAddRecipeHandler} onDeleteIngredient={onDeleteIngredientHandler} />
             <footer className={"text-center"}>Author: Matteo Veroni</footer>
         </article>
     )

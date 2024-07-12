@@ -5,13 +5,14 @@ import {logComponentRendering} from "../../utils/log.js";
 
 KitchenComponent.propTypes = {
     recipes: PropTypes.arrayOf(PropTypes.shape({...RecipeComponent.propTypes})).isRequired,
-    onDeleteIngredient: PropTypes.func
+    onDeleteIngredient: PropTypes.func,
+    onAddRecipe: PropTypes.func
 };
 
 export default function KitchenComponent(props) {
     logComponentRendering(props);
 
-    const {recipes, onDeleteIngredient} = props;
+    const {recipes, onDeleteIngredient, onAddRecipe} = props;
 
     const recipesComponents = recipes.map((recipe) => (
         <div key={recipe.id}>
@@ -30,7 +31,7 @@ export default function KitchenComponent(props) {
             recipesComponents.length > 0
                 ?
                 <>
-                    <KitchenMenuComponent />
+                    <KitchenMenuComponent onAddRecipe={onAddRecipe} />
                     {recipesComponents}
                 </>
                 : null
